@@ -23,6 +23,20 @@ services:
       - DB_NAME=heroManager
     env_file: .env
 
+  hero_manager_marvel:
+    image: hero_manager_marvel_image
+    container_name: hero_manager_marvel
+    build:
+      context: ../../app/services/marvel/
+      dockerfile: ../../deployment/local/services/marvel/Dockerfile
+    volumes:
+      - ../../../app/services/marvel/:/app/services/marvel/
+    ports:
+      - "8081:8080"
+    depends_on:
+      - "hero_manager_database"
+    env_file: .env
+
   hero_manager_frontend:
     image: hero_manager_frontend_image
     container_name: hero_manager_frontend
