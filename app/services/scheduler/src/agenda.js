@@ -5,6 +5,8 @@ const db = require('./database.js');
 const dbHost = process.env.DB_HOST || '127.0.0.1';
 const dbPort = process.env.BD_PORT || 27017;
 const dbName = process.env.DB_NAME || 'heroManager';
+const marvelApiUrl = process.env.MARVEL_API_URL || 'http://hero_manager_marvel:8082';
+const statisticsApiUrl = process.env.STATISTICS_API_URL || 'http://hero_manager_statistics:8083';
 
 // Connection URL
 const url = `mongodb://${dbHost}:${dbPort}/${dbName}`;
@@ -29,7 +31,7 @@ const start = async(mongo) => {
         for (let series of seriesDocuments) {
             //Alterada a linha abaixo pois a marvel é um serviço à parte
             //Necessário fazer um pedido para conseguir os dados de cada série
-            let comics = axios.get('http://hero_manager_marvel:8080/api/marvel/comics/' + series)
+            let comics = await axios.get(marvelApiUrl+'/api/marvel/comics/' + series)
             for (let comic of comics) {
                 let comicDoc = await db.getComic(mongo.db, comic.id)
                 if (!comicDoc) {
@@ -48,7 +50,8 @@ const start = async(mongo) => {
         }
         console.log(`[AGENDA] gathered ${newComics.total} new Comics in ${newComics.series.length} Series`);
 
-        await db.insertStatistics(mongo.db, newComics);
+        //await db.insertStatistics(mongo.db, newComics);
+        await axios.post(statisticsApiUrl+'/api/statistics', newComics);
 
         console.log('[AGENDA] ended job - gather data');
         return done(null, true);
