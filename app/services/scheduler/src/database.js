@@ -73,6 +73,8 @@ const connect = () => {
             client.connect().then(async (data) => {
                 console.log("Connected successfully to server");
                 db = client.db(dbName);
+                await loadDefaults(db);
+                await loadDefaultUser(db);
 
                 return resolve({
                     client: client,

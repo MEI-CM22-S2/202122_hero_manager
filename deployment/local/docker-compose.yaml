@@ -64,6 +64,7 @@ services:
         - DB_HOST=hero_manager_database
         - DB_PORT=27017
         - DB_NAME=heroManager
+        
   hero_manager_scheduler:
       image: hero_manager_scheduler_image
       container_name: hero_manager_scheduler

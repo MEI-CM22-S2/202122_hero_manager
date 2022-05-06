@@ -30,8 +30,8 @@ spec:
               value: heroManager
             - name: PORT
               value: "8084"
-            - name: MARVEL_API_URL 
-              value: 'http://hero_manager_marvel:8082'
-            - name: STATISTICS_API_URL 
-              value: 'http://hero_manager_statistics:8083'
+            - name: MARVEL_API_URL
+              value: "http://hero-manager-marvel:8082"
+            - name: STATISTICS_API_URL
+              value: "http://hero-manager-statistics:8083"  
 

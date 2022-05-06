@@ -22,13 +22,11 @@ spec:
             - containerPort: 8082
           resources: {}
           env:
-            - name: DB_HOST
-              value: hero-manager-database
-            - name: DB_PORT
-              value: "27017"
-            - name: DB_NAME
-              value: heroManager
-            - name: PORT
-              value: "8082"
+            - name: MARVEL_PUBLIC_KEY
+              value: "636a455163d87dd1d2c44ae8132498c6"
+            - name: MARVEL_PRIVATE_KEY
+              value: "680acc65956d512d991e26827dfbe2d392aeb64b"
+            - name: MARVEL_URL
+              value: "https://gateway.marvel.com"
             - name: PORT
               value: "8082"
