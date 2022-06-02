@@ -26,4 +26,4 @@ spec:
               value: "8083"
           envFrom:
             - configMapRef:
-              name: hero-manager-database-configmap
+                name: hero-manager-database-configmap

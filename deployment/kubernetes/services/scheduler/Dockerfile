@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /app/scheduler
+WORKDIR /app/services/scheduler
 
 RUN npm install -g nodemon
 

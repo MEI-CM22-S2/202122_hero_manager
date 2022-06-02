@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /app/marvel
+WORKDIR /app/services/marvel
 
 RUN npm install -g nodemon
 
